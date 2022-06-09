@@ -2,7 +2,7 @@
 all: node_modules build nearcore
 
 .PHONY: build
-build: contracts/wormhole/target/wasm32-unknown-unknown/release/wormhole.wasm contracts/portal/target/wasm32-unknown-unknown/release/portal.wasm contracts/ft/target/wasm32-unknown-unknown/release/ft.wasm contracts/test/target/wasm32-unknown-unknown/release/test.wasm
+build: contracts/wormhole/target/wasm32-unknown-unknown/release/wormhole.wasm contracts/portal/target/wasm32-unknown-unknown/release/portal.wasm contracts/ft/target/wasm32-unknown-unknown/release/ft.wasm contracts/mock-bridge-integration/target/wasm32-unknown-unknown/release/mock_bridge_integration.wasm
 
 contracts/wormhole/target/wasm32-unknown-unknown/release/wormhole.wasm: contracts/wormhole/src/*.rs contracts/wormhole/Cargo.toml
 	cd contracts/wormhole; cargo build --target wasm32-unknown-unknown --release
@@ -13,8 +13,8 @@ contracts/portal/target/wasm32-unknown-unknown/release/portal.wasm: contracts/po
 contracts/ft/target/wasm32-unknown-unknown/release/ft.wasm: contracts/ft/src/*.rs  contracts/ft/Cargo.toml
 	cd contracts/ft; cargo build --target wasm32-unknown-unknown --release
 
-contracts/test/target/wasm32-unknown-unknown/release/test.wasm: contracts/test/src/*.rs  contracts/test/Cargo.toml
-	cd contracts/test; cargo build --target wasm32-unknown-unknown --release
+contracts/mock-bridge-integration/target/wasm32-unknown-unknown/release/mock_bridge_integration.wasm: contracts/mock-bridge-integration/src/*.rs  contracts/mock-bridge-integration/Cargo.toml
+	cd contracts/mock-bridge-integration; cargo build --target wasm32-unknown-unknown --release
 
 package-lock.json: package.json
 	npm install
@@ -46,4 +46,4 @@ clean:
 		contracts/ft/target/wasm32-unknown-unknown/release/ft.wasm \
 		contracts/portal/target/wasm32-unknown-unknown/release/portal.wasm \
 		contracts/wormhole/target/wasm32-unknown-unknown/release/wormhole.wasm \
-                contracts/test/target/wasm32-unknown-unknown/release/test.wasm
+                contracts/mock-bridge-integration/target/wasm32-unknown-unknown/release/mock-bridge-integration.wasm

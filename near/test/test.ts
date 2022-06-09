@@ -47,6 +47,7 @@ const wormholeMethods = {
   viewMethods: [],
   changeMethods: ["boot_wormhole", "submit_vaa"],
 };
+
 const tokenMethods = {
   viewMethods: [],
   changeMethods: [
@@ -64,6 +65,11 @@ const tokenMethods = {
 const testMethods = {
   viewMethods: [],
   changeMethods: ["deploy_ft"],
+};
+
+const ftMethods = {
+  viewMethods: [],
+  changeMethods: ["ft_transfer_call"],
 };
 
 let config: any;
@@ -176,7 +182,7 @@ async function initTest() {
     "./contracts/portal/target/wasm32-unknown-unknown/release/portal.wasm"
   );
   const testContract = await fs.readFile(
-    "./contracts/test/target/wasm32-unknown-unknown/release/test.wasm"
+    "./contracts/mock-bridge-integration/target/wasm32-unknown-unknown/release/mock_bridge_integration.wasm"
   );
 
   let randomKey = nearAPI.utils.KeyPair.fromRandom("ed25519");
@@ -718,6 +724,12 @@ async function test() {
     console.log("vaa: " + Buffer.from(signedVAA).toString("hex"));
     console.log(_parseVAAAlgorand(signedVAA));
   }
+
+//  const tokenContract = new nearAPI.Contract(
+//    testUseContract,
+//    randoToken,
+//    ftMethods
+//  );
 
   console.log("test complete");
 }
