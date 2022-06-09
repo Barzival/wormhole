@@ -16,7 +16,6 @@ export const CHAINS = {
   celo: 14,
   near: 15,
   moonbeam: 16,
-  neon: 17,
   ropsten: 10001,
 } as const;
 
@@ -40,7 +39,6 @@ export type EVMChainName =
   | "klaytn"
   | "celo"
   | "moonbeam"
-  | "neon"
   | "ropsten";
 
 export type Contracts = {
@@ -139,11 +137,6 @@ const MAINNET = {
     token_bridge: undefined,
     nft_bridge: undefined,
   },
-  neon: {
-    core: undefined,
-    token_bridge: undefined,
-    nft_bridge: undefined,
-  },
   ropsten: {
     core: undefined,
     token_bridge: undefined,
@@ -236,11 +229,6 @@ const TESTNET = {
     core: "0xa5B7D85a8f27dd7907dc8FdC21FA5657D5E2F901",
     token_bridge: "0xbc976D4b9D57E57c3cA52e1Fd136C45FF7955A96",
     nft_bridge: "0x98A0F4B96972b32Fcb3BD03cAeB66A44a6aB9Edb",
-  },
-  neon: {
-    core: "0xE4eacc10990ba3308DdCC72d985f2a27D20c7d03",
-    token_bridge: "0xd11De1f930eA1F7Dd0290Fe3a2e35b9C91AEFb37",
-    nft_bridge: "0xa52Da3B1ffd258a2fFB7719a6aeE24095eEE24E2",
   },
   ropsten: {
     core: "0x210c5F5e2AF958B4defFe715Dc621b7a3BA888c5",
@@ -335,11 +323,6 @@ const DEVNET = {
     token_bridge: undefined,
     nft_bridge: undefined,
   },
-  neon: {
-    core: undefined,
-    token_bridge: undefined,
-    nft_bridge: undefined,
-  },
   ropsten: {
     core: undefined,
     token_bridge: undefined,
@@ -402,7 +385,6 @@ export const CHAIN_ID_KLAYTN = CHAINS["klaytn"];
 export const CHAIN_ID_CELO = CHAINS["celo"];
 export const CHAIN_ID_NEAR = CHAINS["near"];
 export const CHAIN_ID_MOONBEAM = CHAINS["moonbeam"];
-export const CHAIN_ID_NEON = CHAINS["neon"];
 export const CHAIN_ID_ETHEREUM_ROPSTEN = CHAINS["ropsten"];
 
 // This inverts the [[CHAINS]] object so that we can look up a chain by id
@@ -511,7 +493,6 @@ export function isEVMChain(
     chainId === CHAIN_ID_KLAYTN ||
     chainId === CHAIN_ID_CELO ||
     chainId === CHAIN_ID_MOONBEAM ||
-    chainId === CHAIN_ID_NEON ||
     chainId === CHAIN_ID_ETHEREUM_ROPSTEN
   ) {
     return isEVM(chainId);
